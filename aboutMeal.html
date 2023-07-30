@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Meal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">
+                <h1>
+                    Meal App
+                </h1>
+            </a>
+            
+            <label class="hamburger">
+                <input type="checkbox" id="menu" onclick="showDrawer();">
+                <svg viewBox="0 0 32 32">
+                  <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                  <path class="line" d="M7 16 27 16"></path>
+                </svg>
+            </label>
+        </nav>
+    </header>
+
+    <main>
+        <div id="aboutMealOuterDiv">
+            <div id="aboutMealInnerDiv">
+
+            </div>
+        </div>
+    </main>
+
+    <aside id="sideDrawer">
+        <div id="favHeading">
+            <h1>My Favourites</h1>
+        </div>
+        <div id="favouriteListDiv">
+            
+        </div>
+    </aside>
+
+    <script src="app.js"></script>
+    <script>
+        //This function will get the item id from the params and fill the data related to that item
+        document.addEventListener("DOMContentLoaded", async function () {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const dataFromPreviousPage = urlParams.get("item");
+
+            let url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
+            let data = await fetchDataFromAPI(url, dataFromPreviousPage);
+            let aboutMealInnerDiv = document.getElementById("aboutMealInnerDiv");
+            let htmlString = ``;
+
+            if (data.meals) {
+                htmlString = `<div id="imageDiv">
+                    <img src="${data.meals[0].strMealThumb}"
+                    class="card-img-top" alt="...">
+                </div>
+                <div id="itemInfo">
+                    <div id="itemName">
+                        <h2>${data.meals[0].strMeal}</h2>
+                        <a href="${data.meals[0].strYoutube}" target="_blank" class="btn btn-outline-light mt-3"><i class="fa-brands fa-youtube"></i></a>
+                    </div> 
+                    <h4>Type : ${data.meals[0].strCategory}</h4>
+                    <h4>Ingrident : ${data.meals[0].strIngredient1}, ${data.meals[0].strIngredient2}, ${data.meals[0].strIngredient3}, ${data.meals[0].strIngredient4}</h4>
+                    <h4>Instruction : </h4>
+                    <p>${data.meals[0].strInstructions}</p>
+                </div>`;
+                aboutMealInnerDiv.innerHTML = htmlString;
+                document.title = data.meals[0].strMeal;
+            }
+        });
+    </script>
+</body>
+</html>

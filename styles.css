@@ -1,0 +1,547 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); 
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+header nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    background: white;
+    border-bottom: 2px solid black;
+    z-index: 1000;
+}
+
+header nav a{
+    text-decoration: none;
+    color: black;
+}
+
+.hamburger {
+    cursor: pointer;
+}
+  
+.hamburger input {
+    display: none;
+}
+  
+.hamburger svg {
+    /* The size of the SVG defines the overall size */
+    height: 2.5em;
+    /* Define the transition for transforming the SVG */
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+  
+.line {
+    fill: none;
+    stroke: black;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+    /* Define the transition for transforming the Stroke */
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+                stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+  
+.line-top-bottom {
+    stroke-dasharray: 12 63;
+}
+  
+.hamburger input:checked + svg {
+    transform: rotate(-45deg);
+}
+  
+.hamburger input:checked + svg .line-top-bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+}
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
+    color: white;
+    width: 100%;
+    min-height: 100vh;
+}
+
+#tagLine{
+    margin-top: 7rem;
+}
+
+#tagLine h1{
+    font-size: 3.5rem;
+    text-align: center;
+}
+
+#searchBoxDiv{
+    position: relative;
+}
+
+#searchBoxDiv input{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 0.5rem 0;
+    width: 40em;
+    padding: 1rem 1rem 1rem 3rem;
+    border-radius: 2rem;
+    border: none;
+    outline: none;
+}
+
+.fa-magnifying-glass{
+    transform: translate(20px, 46px);
+    color: black;
+}
+
+#itemsDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80%;
+    margin-top: 1rem;
+}
+
+.card {
+    width: 250px;
+    height: 300px;
+    margin: 1rem;
+    background-image: linear-gradient(163deg, #6441A5 0%, #2a0845 100%);
+    border-radius: 20px;
+    color: black;
+    transition: all .3s;
+}
+   
+.card2 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 250px;
+    height: 300px;
+    background-color: white;
+    transition: all .2s;
+}
+   
+.card2:hover {
+    transform: scale(0.98);
+    border-radius: 20px;
+}
+
+.card2 img{
+    margin-top: 0.8rem;
+    width: 90%;
+    height: 60%;
+}
+
+.cardContent{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+}
+
+.itemName{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.itemName h3{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.animate {
+    position: relative;
+    animation: leftright 3s infinite alternate ease-in-out;
+}
+
+@keyframes leftright {
+    0%,
+    20% {
+      transform: translateX(0%);
+      left: 0%;
+    }
+    80%,
+    100% {
+      transform: translateX(-100%);
+      left: 100%;
+    }
+}
+
+.fader {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 25px;
+  
+    &.fader-left {
+      left: 0;
+      background: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 1)
+      );
+    }
+  
+    &.fader-right {
+      right: 0;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 1)
+      );
+    }
+}
+
+.btnDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 1.1rem;
+}
+
+.container {
+    display: flex;
+    position: relative;
+}
+  
+.button {
+    text-decoration: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5em 1.5em 0 0;
+    font-size: 13.33px;
+    font-weight: 600;
+    color: black;
+    transition: all .3s ease;
+}
+  
+.arrow {
+    fill: #94a1b2;
+    position: absolute;
+    pointer-events: none;
+    width: 1rem;
+    right: 0;
+    top: 25%;
+    transition: all .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+  
+.button:hover {
+    letter-spacing: 2px;
+}
+  
+.button:hover ~.second {
+    opacity: .66;
+    right: -20px;
+    transition-delay: 50ms;
+}
+  
+.button:hover ~.third {
+    opacity: .33;
+    right: -40px;
+    transition-delay: 100ms;
+}
+  
+.second, .third {
+    opacity: 0;
+}
+
+.favouriteDiv input{
+    display: none;
+}
+
+.fa-heart{
+    cursor: pointer;
+}
+
+.fa-trash{
+    cursor: pointer;
+}
+   
+aside{
+    position: fixed;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    top: 0;
+    right: -25vw;
+    background-color: white;
+    height: 100vh;
+    width: 25vw;
+    padding-top: 5rem;
+    border-left: 2px solid black;
+    z-index: 100;
+    transition: all .4s;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.showDrawer{
+    right: 0;
+}
+
+aside::-webkit-scrollbar{
+    display: none;
+}
+
+#favHeading{
+    padding: 1rem;
+} 
+
+#favouriteListDiv{
+    width: 100%;
+}
+
+.favItem{
+    display: flex;
+    height: 120px;
+    width: 90%;
+    margin: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid black;
+}
+
+.favImageDiv{
+    width: 40%;
+}
+
+.favImageDiv img{
+    height: 100%;
+    width: fit-content;
+}
+
+.favItemInfo{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 60%;
+    padding: 16px 16px 16px 8px;
+}
+
+.favBtnDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.button2 {
+    text-decoration: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: black;
+    transition: all .3s ease;
+}
+    
+.button2:hover {
+    letter-spacing: 2px;
+}
+  
+.button2:hover ~.second {
+    opacity: .66;
+    right: -20px;
+    transition-delay: 50ms;
+}
+  
+.button2:hover ~.third {
+    opacity: .33;
+    right: -40px;
+    transition-delay: 100ms;
+}
+  
+.noPaddding{
+    padding: 0;
+}
+
+#aboutMealOuterDiv{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+    height: 70vh;
+    min-height: 70vh;
+    width: 80vw;
+    background: linear-gradient(163deg, #6441A5 0%, #2a0845 100%);
+    border-radius: 1rem;
+}
+
+#aboutMealInnerDiv{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    height: calc(70vh - 10px);
+    min-height: calc(70vh - 10px);
+    width: calc(80vw - 10px);
+    background: white;
+    border-radius: 1rem;
+    color: black;
+    overflow: hidden;
+}
+
+#imageDiv{
+    width: 40%;
+}
+
+#imageDiv img{
+    width: 100%;
+    border-radius: 1rem 0 0 1rem;
+}
+
+#itemInfo{
+    width: 60%;
+    height: calc(100% - 3rem);
+    padding: 3rem;
+    overflow-y: scroll;
+}
+
+#itemInfo::-webkit-scrollbar {
+    display: none;
+}
+  
+#itemInfo{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#itemName{
+    display: flex;
+    align-items: center;
+}
+
+.fa-youtube{
+    margin-left: 1rem;
+    font-size: 1.8rem;
+    color: red;
+    transition: all .4s;
+}
+
+.fa-youtube:hover{
+    transform: scale(1.2);
+}
+
+@media only screen and (max-width: 1350px){  
+    aside{
+        right: -30vw;
+        width: 30vw;
+    }
+}
+
+@media only screen and (max-width: 1100px){ 
+    #imageDiv{
+        height: 100%;
+    } 
+    #imageDiv img{
+        height: 100%;
+    }
+    #itemInfo{
+        height: calc(100% - 2rem);
+        padding: 2rem;
+    }
+    aside{
+        right: -42vw;
+        width: 42vw;
+    }
+}
+
+@media only screen and (max-width: 768px){  
+    #tagLine h1{
+        font-size: 3rem;
+    }
+    #searchBoxDiv input{
+        width: 30em;
+    }
+    #aboutMealOuterDiv{
+        height: 100vh;
+        min-height: 100vh;
+        width: 70vw;
+        margin: 6rem 0;
+    } 
+    #aboutMealInnerDiv{
+        align-items: flex-start;
+        flex-direction: column;
+        height: calc(100vh - 10px);
+        min-height: calc(100vh - 10px);
+        width: calc(70vw - 10px);
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    #aboutMealInnerDiv::-webkit-scrollbar {
+        display: none;
+    }
+    #imageDiv{
+        height: 40vh;
+        width: 100%;
+    }  
+    #imageDiv img{
+        height: 100%;
+        width: 100%;
+        border-radius: 1rem 1rem 0 0;
+    } 
+    #itemInfo{
+        width: 100%;
+        height: calc(60vh - 2rem);
+        padding: 2rem;
+    }
+    aside{
+        right: -100vw;
+        width: 100vw;
+    }
+}
+
+@media only screen and (max-width: 480px){  
+    header nav{
+        padding: 1rem;
+    }
+    #tagLine h1{
+        font-size: 2rem;
+    }
+    #searchBoxDiv input{
+        width: 20em;
+    }
+    #itemInfo{
+        padding: 1rem;
+    }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meals | Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <a href="index.html">
+                <h1>
+                    Meal App
+                </h1>
+            </a>
+            
+            <label class="hamburger">
+                <input type="checkbox" id="menu" onclick="showDrawer();">
+                <svg viewBox="0 0 32 32">
+                  <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                  <path class="line" d="M7 16 27 16"></path>
+                </svg>
+            </label>
+        </nav>
+    </header>
+
+    <main>
+        <div id="tagLine">
+            <h1>
+                It's Not Just Food,
+            </h1>
+            <h1>
+                It's an Experience
+            </h1>
+        </div>
+        
+        <div id="searchBoxDiv">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" name="search" id="search" onkeyup="getMealList();" placeholder="Search" />
+        </div>
+
+        <div id="itemsDiv">
+            
+        </div>
+    </main>
+
+    <aside id="sideDrawer">
+        <div id="favHeading">
+            <h1>My Favourites</h1>
+        </div>
+        <div id="favouriteListDiv">
+            
+        </div>
+    </aside>
+
+    <script src="app.js"></script>
+</body>
+</html>
